@@ -42,9 +42,11 @@ int main(int argc, char* argv[]){
 	unsigned int docid = 0;
 	unsigned int frec = 0;
 	
+	cout << "Reading \"" << input << "\"\n";
+	
 	fstream reader(input, fstream::in);
 	
-	unsigned int next_doc = 1;
+	unsigned int next_doc = 0;
 	while( reader.good() ){
 		reader.getline(buff, buff_size);
 		unsigned int n_read = reader.gcount();
@@ -74,7 +76,7 @@ int main(int argc, char* argv[]){
 		}
 		
 		// Linea Valida
-		docid = next_doc++;
+		docid = ++next_doc;
 		
 		// Agregar datos al indice invertido
 		for( auto frec_pair : doc_map ){
@@ -88,6 +90,9 @@ int main(int argc, char* argv[]){
 	reader.close();
 	delete [] buff;
 	
+	cout << "Valid docs " << next_doc << ", vocabulary size : " << index.size() << "\n";
+	
+	cout << "Writing \"" << output << "\"\n";
 	fstream writer(output, fstream::out | fstream::trunc);
 	for( auto it_index : index ){
 		word = it_index.first;
