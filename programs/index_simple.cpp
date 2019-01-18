@@ -96,7 +96,7 @@ int main(int argc, char* argv[]){
 	fstream writer(output, fstream::out | fstream::trunc);
 	for( auto it_index : index ){
 		word = it_index.first;
-		writer << word << " ";
+		writer << word << " " << it_index.second.size() << " ";
 		for( auto doc_pair : it_index.second ){
 			docid = doc_pair.first;
 			frec = doc_pair.second;
