@@ -12,7 +12,7 @@ map<string, InvertedList*> &InvertedIndex::getMap(){
 	return mapa;
 }
 
-bool InvertedIndex::load(const char *index_file){
+bool InvertedIndex::load(const string &index_file){
 
 	cout << "InvertedIndex::load - Start (from \"" << index_file << "\")\n";
 	
@@ -63,7 +63,7 @@ bool InvertedIndex::load(const char *index_file){
 }
 
 /*
-bool InvertedIndex::load(const char *index_file, const char *terms_file){
+bool InvertedIndex::load(const string &index_file, const string &terms_file){
 
 	cout<<"InvertedIndex::load - inicio (desde "<<index_file<<" y terms "<<terms_file<<")\n";
 	
@@ -151,7 +151,7 @@ bool InvertedIndex::load(const char *index_file, const char *terms_file){
 }
 */
 
-void InvertedIndex::save(const char *index_file){
+void InvertedIndex::save(const string &index_file){
 
 	cout << "InvertedIndex::save - Start (writing \"" << index_file << "\")\n";
 	

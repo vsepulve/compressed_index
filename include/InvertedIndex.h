@@ -39,11 +39,11 @@ public:
 	
 	map<string, InvertedList*> &getMap();
 	
-	virtual bool load(const char *index_file);
+	virtual bool load(const string &index_file);
 	
-//	virtual bool load(const char *index_file, const char *terms_file);
+//	virtual bool load(const string &index_file, const string &terms_file);
 	
-	virtual void save(const char *index_file);
+	virtual void save(const string &index_file);
 	
 	virtual InvertedList *getList(string &term);
 	
