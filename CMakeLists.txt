@@ -19,15 +19,15 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 include_directories(${CMAKE_SOURCE_DIR}/include)
 file(GLOB SOURCES "${CMAKE_SOURCE_DIR}/src/*.cpp")
 
-#add_executable(compress "${CMAKE_SOURCE_DIR}/programs/compress.cpp")
 add_executable(index_simple "${CMAKE_SOURCE_DIR}/programs/index_simple.cpp")
+add_executable(compress_index "${CMAKE_SOURCE_DIR}/programs/compress_index.cpp")
 
 add_library(compressed_index SHARED ${SOURCES})
 link_directories(${CMAKE_BINARY_DIR})
 
-#target_link_libraries(compress compressed_index pthread divsufsort divsufsort64)
 #target_link_libraries(decompress relz pthread sdsl divsufsort divsufsort64)
 target_link_libraries(index_simple)
+target_link_libraries(compress_index compressed_index)
 
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     set (CMAKE_INSTALL_PREFIX "/usr/" CACHE PATH "default install path" FORCE )
