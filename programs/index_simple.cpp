@@ -48,6 +48,10 @@ int main(int argc, char* argv[]){
 	
 	unsigned int next_doc = 0;
 	while( reader.good() ){
+		
+		// Linea 
+		docid = ++next_doc;
+		
 		reader.getline(buff, buff_size);
 		unsigned int n_read = reader.gcount();
 		if( n_read <= 1 ){
@@ -60,6 +64,16 @@ int main(int argc, char* argv[]){
 		replace(line.begin(), line.end(), '.', ' ');
 		replace(line.begin(), line.end(), ',', ' ');
 		replace(line.begin(), line.end(), ';', ' ');
+		replace(line.begin(), line.end(), '"', ' ');
+		replace(line.begin(), line.end(), '\'', ' ');
+		replace(line.begin(), line.end(), '(', ' ');
+		replace(line.begin(), line.end(), ')', ' ');
+		
+		// Notar que acentos, ñ y otros caracteres especiales 
+		//   NO esta asegurado que funcionen con este metodo
+		for(unsigned int i = 0; i < line.length(); ++i){
+			line[i] = toupper(line[i]);
+		}
 		
 		stringstream toks(line);
 		
@@ -76,7 +90,7 @@ int main(int argc, char* argv[]){
 		}
 		
 		// Linea Valida
-		docid = ++next_doc;
+//		docid = ++next_doc;
 		
 		// Agregar datos al indice invertido
 		for( auto frec_pair : doc_map ){
