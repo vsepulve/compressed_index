@@ -20,6 +20,9 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 file(GLOB SOURCES "${CMAKE_SOURCE_DIR}/src/*.cpp")
 
 add_executable(index_simple "${CMAKE_SOURCE_DIR}/programs/index_simple.cpp")
+add_executable(generar_idf "${CMAKE_SOURCE_DIR}/programs/generar_idf.cpp")
+add_executable(generar_docsize "${CMAKE_SOURCE_DIR}/programs/generar_docsize.cpp")
+add_executable(generar_ubs "${CMAKE_SOURCE_DIR}/programs/generar_ubs.cpp")
 add_executable(compress_index "${CMAKE_SOURCE_DIR}/programs/compress_index.cpp")
 
 add_library(compressed_index SHARED ${SOURCES})
@@ -27,6 +30,9 @@ link_directories(${CMAKE_BINARY_DIR})
 
 #target_link_libraries(decompress relz pthread sdsl divsufsort divsufsort64)
 target_link_libraries(index_simple)
+target_link_libraries(generar_idf compressed_index)
+target_link_libraries(generar_docsize compressed_index)
+target_link_libraries(generar_ubs compressed_index)
 target_link_libraries(compress_index compressed_index)
 
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
