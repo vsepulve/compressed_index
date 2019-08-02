@@ -9,7 +9,7 @@ InvertedIndexBuilder::~InvertedIndexBuilder(){
 
 InvertedIndex *InvertedIndexBuilder::createIndex(const string &text_file, unsigned char list_type, unsigned char payload_type, map<unsigned int, unsigned int> *renumeration){
 
-	cout << "InvertedIndexBuilder::createIndex - Start (from \"" << text_file << "\", list_type: " << list_type << ", payload_type: " << payload_type << ")\n";
+	cout << "InvertedIndexBuilder::createIndex - Start (from \"" << text_file << "\", list_type: " << (unsigned int)list_type << ", payload_type: " << (unsigned int)payload_type << ")\n";
 	
 	InvertedListBuilder list_builder;
 	PayloadListBuilder payload_list_builder;

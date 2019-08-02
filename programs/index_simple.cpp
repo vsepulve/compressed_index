@@ -104,7 +104,7 @@ int main(int argc, char* argv[]){
 	reader.close();
 	delete [] buff;
 	
-	cout << "Valid docs " << next_doc << ", vocabulary size : " << index.size() << "\n";
+	cout << "Valid docs " << (next_doc-1) << ", vocabulary size : " << index.size() << "\n";
 	
 	cout << "Writing \"" << output << "\"\n";
 	fstream writer(output, fstream::out | fstream::trunc);
